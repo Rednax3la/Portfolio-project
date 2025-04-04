@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Alexander Kihoi</title>
+    <link rel="icon" href="https://i.postimg.cc/8CLwW6ZV/Whats-App-Image-2025-04-03-at-4-49-03-PM.jpg">
+    <link rel="stylesheet" href="style2.css">
+    <link href="https://fonts.googleapis.com/css2?family=Ostrich+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="profile-image">
+                <img src="https://i.postimg.cc/8CLwW6ZV/Whats-App-Image-2025-04-03-at-4-49-03-PM.jpg" alt="Profile Image">
+            </div>
+            <nav>
+                <ul>
+                    <li class="nav-item">
+                        <a href="#contact"><i class="fas fa-address-book"></i> CONTACT</a>
+                        <ul class="dropdown">
+                            <li><i class="fas fa-phone"></i> +254110697638</li>
+                            <li><i class="fas fa-envelope"></i> wambugualexander09@gmail.com</li>
+                            <li><i class="fas fa-map-marker-alt"></i> Nairobi-Kenya</li>
+                            <li><i class="fab fa-github"></i> <a href="https://github.com/Rednax3la">GitHub</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#education">EDUCATION</a>
+                        <ol type="I" class="dropdown">
+                            <li>2022-2026(Student) <br>JKUAT UNIVERSITY - KAREN CAMPUS<br>Data Science And Analytics</li>
+                            <li>PLP Academy Feb 2025 Cohort</li>
+                            <li>Alx Pathway</li>
+                        </ol>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#skills">SKILLS</a>
+                        <ul class="dropdown">
+                            <li>CODE: Python, Java, SQL, HTML, CSS,Javascript</li>
+                            <li>Frameworks: Power BI, Tableau, Jamovi, VScode, Jupyter</li>
+                            <li>Statistical Analysis, Visualisation, Web Development</li>
+                            <li>Time Management</li>
+                            <li>Leadership</li>
+                            <li>Communication</li>
+                            <li>Critical Thinking</li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#languages">LANGUAGES</a>
+                        <ul class="dropdown">
+                            <li>English(Fluent)</li>
+                            <li>Swahili(Fluent)</li>
+                            <li>Spanish(Intermediate)</li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="content">
+            <h1>ALEXANDER KIHOI</h1>
+            <h2>DATA SCIENTIST / ANALYST</h2><br>
+            <h4>PROFILE</h4>
+            <hr class="section-divider">
+            <p>I'm currently a senior student in JKUAT pursuing Data Science And Analytics. I have participated in several hackathons by Data Science East Africa, Lux Tech Academy and Alx Kenya through which I have gained hands on experience in Data Science. As my github portrays, I have engaged in project work and have personal projects too. I believe I'd be an asset in any tech environment I am accorded into.</p>
+            <h4>RELEVANT PROJECTS/COURSEWORK:</h4>
+            <hr class="section-divider">
+            <div class="project-buttons">
+                <button class="project-btn" onclick="location.href='https://www.datacamp.com/datalab/w/6e30d90c-d5f1-4e3d-bd59-8525b6d9f978/edit'">
+                    <i class="fas fa-chart-line"></i> Datacamp
+                </button>
+                <button class="project-btn" onclick="location.href='https://github.com/Rednax3la/Nairobi-House-Price-Prediction'">
+                    <i class="fas fa-laptop-code"></i> Lux Tech
+                </button>
+                <button class="project-btn" onclick="location.href='https://github.com/TifaLockhaaart/Japan-Car-manufactured'">
+                    <i class="fas fa-graduation-cap"></i> School
+                </button>
+            </div>
+            <h3>References:</h3>
+            <hr class="section-divider">
+            <ul class="references-list">
+                <li>
+                    <span class="ref-name">Kay Macharia - Alx fellowship member</span>
+                    <span class="ref-phone">Phone: 1234567890</span>
+                </li>
+                <li>
+                    <span class="ref-name">Dennis Gitau - Project Partner</span>
+                    <span class="ref-phone">Phone: 1234567890</span>
+                </li>
+                <li>
+                    <span class="ref-name">Abigael Zawadi - Lux Tech Associate</span>
+                    <span class="ref-phone">Phone: 1234567890</span>
+                </li>
+            </ul>
+            <button id="contactMeBtn" class="contact-btn">Contact me</button>
+            <div class="comment-box">
+                <textarea placeholder="Leave a comment"></textarea>
+                <button class="submit-btn">Submit</button>
+            </div>
+            <div id="contactPopup" class="popup">
+                <span class="close" onclick="closePopup()">&times;</span>
+                <ul>
+                    <li><a href="https://wa.me/+254110697638" target="_blank">WhatsApp</a></li>
+                    <li><a href="mailto:wambugualexander09@gmail.com">Email</a></li>
+                    <li><a href="https://www.instagram.com/art_.is_me/#" target="_blank">Instagram</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <footer>
+        &copy;
+        <p>Alexander's Property Phone: +254781697638</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+
+</html>
