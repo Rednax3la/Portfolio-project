@@ -31,13 +31,14 @@
             background: linear-gradient(135deg, #f5f7fa 0%, #e4e7f1 100%);
             color: var(--dark);
             line-height: 1.6;
+            overflow-x: hidden;
         }
         
         .container {
             display: grid;
             grid-template-columns: 300px 1fr;
-            max-width: 1200px;
-            margin: 0 auto;
+            max-width: 100vw;
+            margin: 0;
             background-color: white;
             box-shadow: var(--shadow);
             min-height: 100vh;
@@ -96,6 +97,8 @@
             margin-bottom: 1.5rem;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             padding-bottom: 1rem;
+            position: relative;
+            cursor: pointer;
         }
         
         .nav-item:last-child {
@@ -124,8 +127,18 @@
         }
         
         .dropdown {
-            padding: 0.8rem 0 0 2rem;
+            padding: 0;
             list-style-type: none;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            background-color: rgba(0, 0, 0, 0.2);
+            border-radius: 0 0 8px 8px;
+        }
+        
+        .dropdown.active {
+            max-height: 500px;
+            padding: 0.8rem 0 0.8rem 2rem;
         }
         
         .dropdown li {
@@ -135,6 +148,14 @@
             display: flex;
             align-items: flex-start;
             gap: 10px;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        
+        .dropdown.active li {
+            opacity: 1;
+            transform: translateY(0);
         }
         
         .dropdown li i {
@@ -157,6 +178,7 @@
         .content {
             padding: 2.5rem;
             background-color: white;
+            width: 100%;
         }
         
         .section-title {
@@ -266,6 +288,11 @@
             border-radius: 10px;
             box-shadow: var(--shadow);
             margin-top: 2rem;
+        }
+        
+        .comment-box h3 {
+            margin-bottom: 1rem;
+            color: var(--secondary);
         }
         
         .comment-box textarea {
@@ -418,6 +445,10 @@
             .project-buttons {
                 grid-template-columns: 1fr;
             }
+            
+            .dropdown {
+                padding-left: 1.5rem;
+            }
         }
     </style>
 </head>
@@ -519,8 +550,8 @@
             
             <div class="comment-box">
                 <h3>Leave a Message</h3>
-                <textarea placeholder="Your message here..."></textarea>
-                <button class="submit-btn">Submit Message</button>
+                <textarea id="commentText" placeholder="Your message here..."></textarea>
+                <button id="submitComment" class="submit-btn">Submit Message</button>
             </div>
             
             <div id="contactPopup" class="popup">
@@ -543,10 +574,37 @@
     </div>
     
     <script>
-        // Contact Popup Functionality
-        document.getElementById('contactMeBtn').addEventListener('click', function() {
-            document.getElementById('contactPopup').style.display = 'flex';
+        // Dropdown functionality
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', function(e) {
+                // Close all other dropdowns first
+                document.querySelectorAll('.dropdown').forEach(dropdown => {
+                    if (dropdown !== this.querySelector('.dropdown')) {
+                        dropdown.classList.remove('active');
+                    }
+                });
+                
+                // Toggle current dropdown
+                const dropdown = this.querySelector('.dropdown');
+                if (dropdown) {
+                    dropdown.classList.toggle('active');
+                }
+            });
         });
+        
+        // Close dropdowns when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.nav-item')) {
+                document.querySelectorAll('.dropdown').forEach(dropdown => {
+                    dropdown.classList.remove('active');
+                });
+            }
+        });
+        
+        // Contact popup functionality
+        document.getElementById('contactMeBtn').onclick = function() {
+            document.getElementById('contactPopup').style.display = 'flex';
+        };
         
         function closePopup() {
             document.getElementById('contactPopup').style.display = 'none';
@@ -560,16 +618,37 @@
             }
         });
         
-        // Form submission
-        document.querySelector('.submit-btn').addEventListener('click', function() {
-            const textarea = document.querySelector('.comment-box textarea');
-            if (textarea.value.trim() === '') {
-                alert('Please enter your message before submitting.');
-                return;
+        // Close popup with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closePopup();
             }
-            
-            alert('Thank you for your message! Alexander will get back to you soon.');
-            textarea.value = '';
+        });
+        
+        // Comment form submission
+        document.getElementById('submitComment').addEventListener('click', () => {
+            const comment = document.getElementById('commentText').value;
+            if (comment.trim()) {
+                // In a real implementation, you would send this to your server
+                // For now, we'll simulate a successful submission
+                alert('Thank you for your comment! Alexander will get back to you soon.');
+                document.getElementById('commentText').value = '';
+            } else {
+                alert('Please enter a comment before submitting');
+            }
+        });
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
         });
     </script>
 </body>
