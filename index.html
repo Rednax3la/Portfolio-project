@@ -1,22 +1,437 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio - Alexander Kihoi</title>
+    <title>Portfolio - Alexander Kihoi | Data Scientist/Analyst</title>
     <link rel="icon" href="https://i.postimg.cc/8CLwW6ZV/Whats-App-Image-2025-04-03-at-4-49-03-PM.jpg">
-    <link rel="stylesheet" href="style2.css">
-    <link href="https://fonts.googleapis.com/css2?family=Ostrich+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Ostrich+Sans:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --primary: #1a73e8;
+            --secondary: #0d47a1;
+            --accent: #4caf50;
+            --light: #f5f7fa;
+            --dark: #1e293b;
+            --gray: #64748b;
+            --light-gray: #e2e8f0;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e7f1 100%);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            box-shadow: var(--shadow);
+            min-height: 100vh;
+            position: relative;
+        }
+        
+        /* Header */
+        .header {
+            grid-column: 1 / -1;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-family: 'Ostrich Sans', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+        }
+        
+        .header h2 {
+            font-size: 1.5rem;
+            font-weight: 400;
+            opacity: 0.9;
+        }
+        
+        /* Sidebar */
+        .sidebar {
+            background: var(--dark);
+            color: white;
+            padding: 2rem 1.5rem;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+        }
+        
+        .profile-image {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .profile-image img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 4px solid var(--accent);
+            object-fit: cover;
+            box-shadow: var(--shadow);
+        }
+        
+        .nav-item {
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 1rem;
+        }
+        
+        .nav-item:last-child {
+            border-bottom: none;
+        }
+        
+        .nav-item > a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 0.5rem 0;
+            transition: var(--transition);
+        }
+        
+        .nav-item > a:hover {
+            color: var(--accent);
+        }
+        
+        .nav-item > a i {
+            font-size: 1.1rem;
+            width: 25px;
+        }
+        
+        .dropdown {
+            padding: 0.8rem 0 0 2rem;
+            list-style-type: none;
+        }
+        
+        .dropdown li {
+            margin-bottom: 0.6rem;
+            font-size: 0.95rem;
+            color: var(--light-gray);
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+        
+        .dropdown li i {
+            margin-top: 4px;
+            color: var(--accent);
+        }
+        
+        .dropdown a {
+            color: #64b5f6;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .dropdown a:hover {
+            color: var(--accent);
+            text-decoration: underline;
+        }
+        
+        /* Content */
+        .content {
+            padding: 2.5rem;
+            background-color: white;
+        }
+        
+        .section-title {
+            font-family: 'Ostrich Sans', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin: 1.5rem 0 0.5rem;
+            letter-spacing: 1px;
+        }
+        
+        .section-divider {
+            height: 3px;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            border: none;
+            margin-bottom: 1.5rem;
+        }
+        
+        .profile-text {
+            margin-bottom: 2rem;
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+        
+        .project-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.2rem;
+            margin: 1.5rem 0 2rem;
+        }
+        
+        .project-btn {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            padding: 1.2rem 1rem;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: var(--shadow);
+        }
+        
+        .project-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .project-btn i {
+            font-size: 1.8rem;
+        }
+        
+        .references-list {
+            list-style-type: none;
+            margin: 1.5rem 0 2rem;
+        }
+        
+        .references-list li {
+            background-color: var(--light);
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: var(--shadow);
+        }
+        
+        .ref-name {
+            font-weight: 600;
+        }
+        
+        .ref-phone {
+            color: var(--secondary);
+            font-weight: 500;
+        }
+        
+        .contact-btn {
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            display: block;
+            margin: 2rem auto;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+        }
+        
+        .contact-btn:hover {
+            background-color: #3d8b40;
+            transform: scale(1.05);
+        }
+        
+        .comment-box {
+            background-color: var(--light);
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            margin-top: 2rem;
+        }
+        
+        .comment-box textarea {
+            width: 100%;
+            height: 120px;
+            padding: 1rem;
+            border: 1px solid var(--light-gray);
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            resize: vertical;
+            margin-bottom: 1rem;
+        }
+        
+        .submit-btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 500;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .submit-btn:hover {
+            background-color: var(--secondary);
+        }
+        
+        /* Popup */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .popup-content {
+            background-color: white;
+            padding: 2.5rem;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+            text-align: center;
+        }
+        
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 2rem;
+            color: var(--gray);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .close:hover {
+            color: var(--dark);
+        }
+        
+        .popup-content h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--secondary);
+        }
+        
+        .popup-content ul {
+            list-style-type: none;
+            margin-top: 1.5rem;
+        }
+        
+        .popup-content li {
+            margin-bottom: 1.2rem;
+        }
+        
+        .popup-content a {
+            display: block;
+            background-color: var(--primary);
+            color: white;
+            text-decoration: none;
+            padding: 1rem;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+        
+        .popup-content a:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+        }
+        
+        /* Footer */
+        footer {
+            grid-column: 1 / -1;
+            background-color: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 1.2rem;
+            font-size: 0.95rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                position: relative;
+                height: auto;
+            }
+            
+            .header {
+                padding: 1.5rem;
+            }
+            
+            .header h1 {
+                font-size: 2.8rem;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .content {
+                padding: 1.5rem;
+            }
+            
+            .header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .header h2 {
+                font-size: 1.2rem;
+            }
+            
+            .references-list li {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 5px;
+            }
+            
+            .project-buttons {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 
 <body>
     <div class="container">
+        <header class="header">
+            <h1>ALEXANDER KIHOI</h1>
+            <h2>DATA SCIENTIST / ANALYST</h2>
+        </header>
+        
         <div class="sidebar">
             <div class="profile-image">
-                <img src="https://i.postimg.cc/8CLwW6ZV/Whats-App-Image-2025-04-03-at-4-49-03-PM.jpg" alt="Profile Image">
+                <img src="https://i.postimg.cc/8CLwW6ZV/Whats-App-Image-2025-04-03-at-4-49-03-PM.jpg" alt="Alexander Kihoi">
             </div>
             <nav>
                 <ul>
@@ -26,11 +441,11 @@
                             <li><i class="fas fa-phone"></i> +254110697638</li>
                             <li><i class="fas fa-envelope"></i> wambugualexander09@gmail.com</li>
                             <li><i class="fas fa-map-marker-alt"></i> Nairobi-Kenya</li>
-                            <li><i class="fab fa-github"></i> <a href="https://github.com/Rednax3la">GitHub</a></li>
+                            <li><i class="fab fa-github"></i> <a href="https://github.com/Rednax3la">GitHub Profile</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a href="#education">EDUCATION</a>
+                        <a href="#education"><i class="fas fa-graduation-cap"></i> EDUCATION</a>
                         <ol type="I" class="dropdown">
                             <li>2022-2026(Student) <br>JKUAT UNIVERSITY - KAREN CAMPUS<br>Data Science And Analytics</li>
                             <li>PLP Academy Feb 2025 Cohort</li>
@@ -38,48 +453,52 @@
                         </ol>
                     </li>
                     <li class="nav-item">
-                        <a href="#skills">SKILLS</a>
+                        <a href="#skills"><i class="fas fa-laptop-code"></i> SKILLS</a>
                         <ul class="dropdown">
-                            <li>CODE: Python, Java, SQL, HTML, CSS,Javascript</li>
-                            <li>Frameworks: Power BI, Tableau, Jamovi, VScode, Jupyter</li>
-                            <li>Statistical Analysis, Visualisation, Web Development</li>
-                            <li>Time Management</li>
-                            <li>Leadership</li>
-                            <li>Communication</li>
-                            <li>Critical Thinking</li>
+                            <li><i class="fas fa-code"></i> Programming: Python, Java, SQL, HTML, CSS, JavaScript</li>
+                            <li><i class="fas fa-cogs"></i> Tools: Power BI, Tableau, Jamovi, VScode, Jupyter</li>
+                            <li><i class="fas fa-chart-bar"></i> Data Analysis & Visualization</li>
+                            <li><i class="fas fa-globe"></i> Web Development</li>
+                            <li><i class="fas fa-clock"></i> Time Management</li>
+                            <li><i class="fas fa-users"></i> Leadership</li>
+                            <li><i class="fas fa-comments"></i> Communication</li>
+                            <li><i class="fas fa-brain"></i> Critical Thinking</li>
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a href="#languages">LANGUAGES</a>
+                        <a href="#languages"><i class="fas fa-language"></i> LANGUAGES</a>
                         <ul class="dropdown">
-                            <li>English(Fluent)</li>
-                            <li>Swahili(Fluent)</li>
-                            <li>Spanish(Intermediate)</li>
+                            <li><i class="fas fa-check-circle"></i> English (Fluent)</li>
+                            <li><i class="fas fa-check-circle"></i> Swahili (Fluent)</li>
+                            <li><i class="fas fa-check-circle"></i> Spanish (Intermediate)</li>
                         </ul>
                     </li>
                 </ul>
             </nav>
         </div>
+        
         <div class="content">
-            <h1>ALEXANDER KIHOI</h1>
-            <h2>DATA SCIENTIST / ANALYST</h2><br>
-            <h4>PROFILE</h4>
+            <h3 class="section-title">PROFILE</h3>
             <hr class="section-divider">
-            <p>I'm currently a senior student at JKUAT pursuing Data Science and Analytics. I have participated in several hackathons by Data Science East Africa, Lux Tech Academy, and Alx Kenya, through which I have gained hands-on experience in Data Science. As my GitHub portrays, I have engaged in project work and have personal projects as well. I believe I would be an asset in any tech environment I am given the opportunity to be in.</p>
-            <h4>RELEVANT PROJECTS/COURSEWORK:</h4>
+            <p class="profile-text">
+                I'm currently a senior student at JKUAT pursuing Data Science and Analytics. I have participated in several hackathons by Data Science East Africa, Lux Tech Academy, and Alx Kenya, through which I have gained hands-on experience in Data Science. As my GitHub portrays, I have engaged in project work and have personal projects as well. I believe I would be an asset in any tech environment I am given the opportunity to be in.
+            </p>
+            
+            <h3 class="section-title">RELEVANT PROJECTS/COURSEWORK</h3>
             <hr class="section-divider">
             <div class="project-buttons">
                 <button class="project-btn" onclick="location.href='https://www.datacamp.com/datalab/w/6e30d90c-d5f1-4e3d-bd59-8525b6d9f978/edit'">
-                    <i class="fas fa-chart-line"></i> Datacamp
+                    <i class="fas fa-chart-line"></i> Datacamp Projects
                 </button>
                 <button class="project-btn" onclick="location.href='https://github.com/Rednax3la/Nairobi-House-Price-Prediction'">
-                    <i class="fas fa-laptop-code"></i> Lux Tech
+                    <i class="fas fa-laptop-code"></i> Lux Tech Projects
                 </button>
                 <button class="project-btn" onclick="location.href='https://github.com/TifaLockhaaart/Japan-Car-manufactured'">
-                    <i class="fas fa-graduation-cap"></i> School
+                    <i class="fas fa-graduation-cap"></i> Academic Projects
                 </button>
             </div>
-            <h3>References:</h3>
+            
+            <h3 class="section-title">REFERENCES</h3>
             <hr class="section-divider">
             <ul class="references-list">
                 <li>
@@ -88,35 +507,70 @@
                 </li>
                 <li>
                     <span class="ref-name">Dennis Gitau - Project Partner</span>
-                    <span class="ref-phone">Phone:
- +254 797 469136</span>
+                    <span class="ref-phone">Phone: +254 797 469136</span>
                 </li>
                 <li>
                     <span class="ref-name">Abigael Zawadi - Lux Tech Associate</span>
-                    <span class="ref-phone">Phone:
- +254 782 919094</span>
+                    <span class="ref-phone">Phone: +254 782 919094</span>
                 </li>
             </ul>
-            <button id="contactMeBtn" class="contact-btn">Contact me</button>
+            
+            <button id="contactMeBtn" class="contact-btn">Contact Me</button>
+            
             <div class="comment-box">
-                <textarea placeholder="Leave a comment"></textarea>
-                <button class="submit-btn">Submit</button>
+                <h3>Leave a Message</h3>
+                <textarea placeholder="Your message here..."></textarea>
+                <button class="submit-btn">Submit Message</button>
             </div>
+            
             <div id="contactPopup" class="popup">
-                <span class="close" onclick="closePopup()">&times;</span>
-                <ul>
-                    <li><a href="https://wa.me/+254110697638" target="_blank">WhatsApp</a></li>
-                    <li><a href="mailto:wambugualexander09@gmail.com">Email</a></li>
-                    <li><a href="https://www.instagram.com/art_.is_me/#" target="_blank">Instagram</a></li>
-                </ul>
+                <div class="popup-content">
+                    <span class="close" onclick="closePopup()">&times;</span>
+                    <h3>Contact Alexander</h3>
+                    <p>Choose your preferred contact method:</p>
+                    <ul>
+                        <li><a href="https://wa.me/+254110697638" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a></li>
+                        <li><a href="mailto:wambugualexander09@gmail.com"><i class="fas fa-envelope"></i> Email</a></li>
+                        <li><a href="https://www.instagram.com/art_.is_me/#" target="_blank"><i class="fab fa-instagram"></i> Instagram</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
+        
+        <footer>
+            &copy; 2025 Alexander's Portfolio | Phone: +254781697638
+        </footer>
     </div>
-    <footer>
-        &copy;
-        <p>Alexander's Property Phone: +254781697638</p>
-    </footer>
-    <script src="script.js"></script>
+    
+    <script>
+        // Contact Popup Functionality
+        document.getElementById('contactMeBtn').addEventListener('click', function() {
+            document.getElementById('contactPopup').style.display = 'flex';
+        });
+        
+        function closePopup() {
+            document.getElementById('contactPopup').style.display = 'none';
+        }
+        
+        // Close popup when clicking outside
+        window.addEventListener('click', function(event) {
+            const popup = document.getElementById('contactPopup');
+            if (event.target === popup) {
+                closePopup();
+            }
+        });
+        
+        // Form submission
+        document.querySelector('.submit-btn').addEventListener('click', function() {
+            const textarea = document.querySelector('.comment-box textarea');
+            if (textarea.value.trim() === '') {
+                alert('Please enter your message before submitting.');
+                return;
+            }
+            
+            alert('Thank you for your message! Alexander will get back to you soon.');
+            textarea.value = '';
+        });
+    </script>
 </body>
-
 </html>
