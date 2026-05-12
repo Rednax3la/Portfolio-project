@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Search, ArrowRight, Github, Mail, ExternalLink } from 'lucide-react'
+import { Search, ArrowRight, Github, Mail } from 'lucide-react'
 import { useAppStore } from '@/store/useAppStore'
 import { SITE, NAV_CHAPTERS } from '@/lib/constants'
 import { cn } from '@/lib/utils'

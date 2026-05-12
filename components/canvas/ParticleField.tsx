@@ -61,7 +61,6 @@ export default function ParticleField({ count = 80 }: { count?: number }) {
       <bufferGeometry>
         <bufferAttribute
           attach="attributes-position"
-          // @ts-expect-error R3F bufferAttribute args
           args={[positions, 3]}
         />
       </bufferGeometry>

@@ -32,12 +32,10 @@ export default function StarField({ count = 3000 }: { count?: number }) {
       <bufferGeometry>
         <bufferAttribute
           attach="attributes-position"
-          // @ts-expect-error R3F bufferAttribute args
           args={[positions, 3]}
         />
         <bufferAttribute
           attach="attributes-size"
-          // @ts-expect-error R3F bufferAttribute args
           args={[sizes, 1]}
         />
       </bufferGeometry>

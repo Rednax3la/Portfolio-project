@@ -2,7 +2,7 @@
 
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { TIMELINE, SITE } from '@/lib/constants'
+import { TIMELINE } from '@/lib/constants'
 
 function TimelineItem({ entry, index }: { entry: typeof TIMELINE[number]; index: number }) {
   const ref = useRef<HTMLDivElement>(null)
