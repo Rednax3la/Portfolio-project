@@ -112,13 +112,13 @@ export default function AboutSection() {
           {/* Narrative */}
           <div className="space-y-4">
             <p className="font-body text-sm md:text-base text-ink-muted leading-relaxed">
-              I didn't start in tech because I loved code. I started because data was the most powerful language
-              I'd found for understanding the world. Somewhere between a Python notebook and a broken API at 2am,
+              I didn&apos;t start in tech because I loved code. I started because data was the most powerful language
+              I&apos;d found for understanding the world. Somewhere between a Python notebook and a broken API at 2am,
               that changed.
             </p>
             <p className="font-body text-sm md:text-base text-ink-muted leading-relaxed">
               Now I build things that matter. Products that solve problems African builders have ignored for too long.
-              Not because it's easy — because it's necessary.
+              Not because it&apos;s easy — because it&apos;s necessary.
             </p>
           </div>
 

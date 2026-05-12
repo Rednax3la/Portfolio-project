@@ -273,7 +273,7 @@ export default function ContactSection() {
               transition={{ type: 'spring', stiffness: 300, damping: 25 }}
               onClick={(e) => e.stopPropagation()}
             >
-              <p className="font-mono text-xs text-electric tracking-widest mb-4">// CLASSIFIED</p>
+              <p className="font-mono text-xs text-electric tracking-widest mb-4">&#47;&#47; CLASSIFIED</p>
               <h3 className="font-display text-2xl font-bold text-ink mb-4">
                 You found it. 👾
               </h3>
